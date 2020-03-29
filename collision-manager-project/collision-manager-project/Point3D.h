@@ -14,6 +14,9 @@ public:
 	float y;
 	float z;
 	Point3D operator +(Point3D movement);
+	Point3D operator +=(Point3D movement);
+	Point3D operator -(Point3D movement);
+	Point3D operator -=(Point3D movement);
 	string toString();
 	string toString(string tabbing);
 };

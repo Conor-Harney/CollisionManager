@@ -16,8 +16,25 @@ Point2D::Point2D(float x, float y): x(x), y(y)
 
 Point2D Point2D::operator +(Point2D movement)
 {
+	return Point2D(x + movement.x, y + movement.y);
+}
+
+Point2D Point2D::operator +=(Point2D movement)
+{
 	x += movement.x;
 	y += movement.y;
+	return *this;
+}
+
+Point2D Point2D::operator -(Point2D movement)
+{
+	return Point2D(x - movement.x, y - movement.y);
+}
+
+Point2D Point2D::operator -=(Point2D movement)
+{
+	x -= movement.x;
+	y -= movement.y;
 	return *this;
 }
 

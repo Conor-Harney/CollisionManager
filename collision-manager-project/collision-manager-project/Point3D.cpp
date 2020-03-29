@@ -16,9 +16,27 @@ Point3D::Point3D(float x, float y, float z): x(x), y(y), z(z)
 
 Point3D Point3D::operator +(Point3D movement)
 {
+	return Point3D(x + movement.x, y + movement.y, z + movement.z);
+}
+
+Point3D Point3D::operator +=(Point3D movement)
+{
 	x += movement.x;
 	y += movement.y;
 	z += movement.z;
+	return *this;
+}
+
+Point3D Point3D::operator -(Point3D movement)
+{
+	return Point3D(x - movement.x, y - movement.y, z - movement.z);
+}
+
+Point3D Point3D::operator -=(Point3D movement)
+{
+	x -= movement.x;
+	y -= movement.y;
+	z -= movement.z;
 	return *this;
 }
 	

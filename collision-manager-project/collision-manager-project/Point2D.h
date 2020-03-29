@@ -13,6 +13,9 @@ public:
 	float x;
 	float y;
 	Point2D operator +(Point2D movement);
+	Point2D operator +=(Point2D movement);
+	Point2D operator -(Point2D movement);
+	Point2D operator -=(Point2D movement);
 	string toString();
 	string toString(string tabbing);
 };
