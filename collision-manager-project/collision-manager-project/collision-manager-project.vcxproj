@@ -65,9 +65,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Point2D.h" />
+    <ClInclude Include="Point3D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Point2D.cpp" />
+    <ClCompile Include="Point3D.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
