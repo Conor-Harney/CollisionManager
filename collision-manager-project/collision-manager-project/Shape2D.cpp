@@ -1,16 +1,16 @@
-#include "SimpleShape.h"
+#include "Shape2D.h"
 
-SimpleShape::SimpleShape(list<Point2D> bounds)
+Shape2D::Shape2D(list<Point2D> bounds)
 {
 	recalculateBounds(bounds);
 }
 
-Point2D SimpleShape::getPosition()
+Point2D Shape2D::getPosition()
 {
 	return m_center;
 }
 
-bool SimpleShape::collision(Enums::CollisionType collisionType, Point2D targetPoint)
+bool Shape2D::collision(Enums::CollisionType collisionType, Point2D targetPoint)
 {
 	switch(collisionType)
 	{
@@ -24,7 +24,7 @@ bool SimpleShape::collision(Enums::CollisionType collisionType, Point2D targetPo
 	return false;
 }
 
-bool SimpleShape::collision(Enums::CollisionType collisionType, SimpleShape targetShape)
+bool Shape2D::collision(Enums::CollisionType collisionType, Shape2D targetShape)
 {
 	switch(collisionType)
 	{
@@ -38,7 +38,7 @@ bool SimpleShape::collision(Enums::CollisionType collisionType, SimpleShape targ
 	return false;
 }
 
-void SimpleShape::move(Point2D movement)
+void Shape2D::move(Point2D movement)
 {
 	for(list<Point2D>::iterator iter = m_points.begin(); iter != m_points.end(); ++iter)
 	{
@@ -47,28 +47,28 @@ void SimpleShape::move(Point2D movement)
 	recalculateBounds(m_points);
 }
 
-list<Point2D> SimpleShape::getBounds()
+list<Point2D> Shape2D::getBounds()
 {
 	return m_points;
 }
 
-float SimpleShape::getRadius()
+float Shape2D::getRadius()
 {
 	return m_longestRadius;
 }
 
-Point2D SimpleShape::getCenter()
+Point2D Shape2D::getCenter()
 {
 	return m_center;
 }
 
 /*---PRIVATE----*/
 
-SimpleShape::~SimpleShape()
+Shape2D::~Shape2D()
 {
 }
 
-void SimpleShape::recalculateBounds(list<Point2D> newPoints)
+void Shape2D::recalculateBounds(list<Point2D> newPoints)
 {
 	m_points = newPoints;
 	calculateMinMaxGeoPoints();
@@ -76,7 +76,7 @@ void SimpleShape::recalculateBounds(list<Point2D> newPoints)
 	calculateMinMaxRadiuses();
 }
 
-void SimpleShape::calculateMinMaxGeoPoints()
+void Shape2D::calculateMinMaxGeoPoints()
 {//store the min and max x and y points (box bounds)
 	list<Point2D>::iterator iter = m_points.begin();
 	m_minX = iter->x;
@@ -93,7 +93,7 @@ void SimpleShape::calculateMinMaxGeoPoints()
 	}
 }
 	
-void SimpleShape::calculateMinMaxRadiuses()
+void Shape2D::calculateMinMaxRadiuses()
 {//Store the distances between the center and the closest and furthest bound 
 	list<Point2D>::iterator iter = m_points.begin();
 	float currentRadius = Line::getLength(m_center, *iter);
@@ -108,12 +108,12 @@ void SimpleShape::calculateMinMaxRadiuses()
 	}
 }
 
-bool SimpleShape::circleCollision(Point2D targetPoint)
+bool Shape2D::circleCollision(Point2D targetPoint)
 {
 	return Line::getLength(m_center, targetPoint) < m_longestRadius;
 }
 
-bool SimpleShape::boxCollision(Point2D targetPoint)
+bool Shape2D::boxCollision(Point2D targetPoint)
 {
 	if(targetPoint.x >= m_minX && targetPoint.x <= m_maxX)
 		if(targetPoint.y >= m_minY && targetPoint.y <= m_maxY)
@@ -121,18 +121,18 @@ bool SimpleShape::boxCollision(Point2D targetPoint)
 	return false;
 }
 
-bool SimpleShape::pixleCollision(Point2D targetPoint)
+bool Shape2D::pixleCollision(Point2D targetPoint)
 {
 	//todo
 	return false;
 }
 
-bool SimpleShape::circleCollision(SimpleShape targetShape)
+bool Shape2D::circleCollision(Shape2D targetShape)
 {
 	return Line::getLength(m_center, targetShape.getCenter()) < (getRadius() + targetShape.getRadius());
 }
 
-bool SimpleShape::boxCollision(SimpleShape targetShape)
+bool Shape2D::boxCollision(Shape2D targetShape)
 {
 	for(Point2D targetPoint : targetShape.getBounds())
 		if(boxCollision(targetPoint))
@@ -140,7 +140,7 @@ bool SimpleShape::boxCollision(SimpleShape targetShape)
 	return false;
 }
 
-bool SimpleShape::pixleCollision(SimpleShape targetShape)
+bool Shape2D::pixleCollision(Shape2D targetShape)
 {
 	//todo
 	return false;

@@ -67,14 +67,14 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Point3D.h" />
-    <ClInclude Include="SimpleShape.h" />
+    <ClInclude Include="Shape2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Enums.h" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="Point3D.cpp" />
-    <ClCompile Include="SimpleShape.cpp" />
+    <ClCompile Include="Shape2D.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>

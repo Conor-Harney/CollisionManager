@@ -1,5 +1,5 @@
-#ifndef SIMPLESHAPE_H
-#define SIMPLESHAPE_H
+#ifndef Shape2D_H
+#define Shape2D_H
 #include <String>
 #include <list>
 #include "Point2D.h"
@@ -8,21 +8,21 @@
 
 using namespace std;
 
-class SimpleShape
+class Shape2D
 {
 public:
 	
-	SimpleShape(list<Point2D> bounds);
+	Shape2D(list<Point2D> bounds);
 	Point2D getPosition();
 	bool collision(Enums::CollisionType collisionType, Point2D targetPoint);
-	bool collision(Enums::CollisionType collisionType, SimpleShape targetShape);
+	bool collision(Enums::CollisionType collisionType, Shape2D targetShape);
 	void move(Point2D movement);
 	list<Point2D> getBounds();
 	float getRadius();
 	Point2D getCenter();
 
 private:
-	~SimpleShape(void);
+	~Shape2D(void);
 	list<Point2D> m_points;
 	Point2D m_center;
 	float m_minX;
@@ -38,9 +38,9 @@ private:
 	bool circleCollision(Point2D targetPoint);
 	bool boxCollision(Point2D targetPoint);
 	bool pixleCollision(Point2D targetPoint);
-	bool circleCollision(SimpleShape targetShape);
-	bool boxCollision(SimpleShape targetShape);
-	bool pixleCollision(SimpleShape targetShape);
+	bool circleCollision(Shape2D targetShape);
+	bool boxCollision(Shape2D targetShape);
+	bool pixleCollision(Shape2D targetShape);
 };
 
 #endif
