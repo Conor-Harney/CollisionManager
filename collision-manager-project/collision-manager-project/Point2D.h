@@ -1,4 +1,5 @@
-#pragma once
+#ifndef POIN2D_H
+#define POIN2D_H
 #include <string>
 #include <sstream>
 
@@ -20,3 +21,4 @@ public:
 	string toString(string tabbing);
 };
 
+#endif

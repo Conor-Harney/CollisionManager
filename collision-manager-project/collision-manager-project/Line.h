@@ -25,6 +25,12 @@ public:
 	string toString();
 	string toString(string tabbing);
 	Point2D getDirection();
+	Line directionRageForCollision(Point2D targetPoint);// Get the range of directions a line must be pointed from a starting point to clide with this line;
+	bool collision(Line targetLine);// check if the target line colllides with this line;
+	static Point2D getDirection(Point2D p1, Point2D p2);
+	static Point2D getDirection(Point2D p1, Point2D p2, float length);
+	static float getLength(Point2D p1, Point2D p2);
+	static Point2D getCenter(Point2D p1, Point2D p2);
 
 private:
 	Point2D m_p1;
@@ -32,6 +38,7 @@ private:
 	Point2D m_center;
 	float m_length;
 	void calculateFromPoints(Point2D p1, Point2D p2);
+	bool directionInDirectionRange(Point2D direction, Line range);
 	
 };
 
